@@ -1,0 +1,9 @@
+{
+  "_note": "Your own fair values for markets the Starship model does not price. fairCents = what you think YES is worth (1-99). The agent trades a market only when the book is at least edgeCents away from this. Delete an entry to stop trading it. These are YOUR views; SMX does not supply them.",
+  "views": {
+    "_example-market-id": {
+      "fairCents": 50,
+      "note": "Replace with a real id from npm run markets and your own number"
+    }
+  }
+}

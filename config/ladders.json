@@ -1,0 +1,44 @@
+{
+  "_note": "Every number under 'model' is an EXAMPLE ASSUMPTION for the reference agent, not an SMX view or forecast. Edit them, or replace model.js with your own. Market ids are the Base Sepolia testnet launch books; the deadline of each rung is read from chain.",
+  "model": {
+    "pScheduledFlies": 0.85,
+    "pOnNet": 0.3,
+    "slipDaysMean": 12,
+    "clampCents": [2, 97]
+  },
+  "ladders": [
+    {
+      "name": "Starship lifts off at least twice (count from 10 Oct 2026)",
+      "count": { "type": "liftoff", "since": "2026-10-10T00:00:00Z" },
+      "needed": 2,
+      "attemptFilter": {},
+      "pSuccessPerAttempt": 1,
+      "backgroundAttemptsPerDay": 0.015,
+      "markets": ["TEST-V7-SS2LIFT-31DEC26", "TEST-V7-SS2LIFT-31JAN27", "TEST-V7-SS2LIFT-28FEB27", "TEST-V8-SS2LIFT-31MAR27"]
+    },
+    {
+      "name": "First Starship liftoff from Florida",
+      "count": { "type": "liftoff", "site": "florida", "since": "2020-01-01T00:00:00Z" },
+      "needed": 1,
+      "attemptFilter": { "site": "florida" },
+      "pSuccessPerAttempt": 1,
+      "backgroundAttemptsPerDay": 0.004,
+      "markets": ["TEST-V7-SSFLA-31JAN27", "TEST-V7-SSFLA-31MAR27", "TEST-V8-SSFLA-30APR27"]
+    },
+    {
+      "name": "First Ship tower catch",
+      "count": { "type": "ship-catch", "since": "2020-01-01T00:00:00Z" },
+      "needed": 1,
+      "attemptFilter": { "plans": "ship-catch" },
+      "pSuccessPerAttempt": 0.45,
+      "backgroundAttemptsPerDay": 0.006,
+      "markets": ["TEST-V8-SHIPCATCH-31JAN27", "TEST-V7-SHIPCATCH-31MAR27", "TEST-V7-SHIPCATCH-30JUN27"]
+    }
+  ],
+  "trading": {
+    "edgeCents": 8,
+    "maxSharesPerOrder": 10,
+    "maxOrdersPerDay": 1,
+    "maxOrdersPerMarketPerDay": 1
+  }
+}

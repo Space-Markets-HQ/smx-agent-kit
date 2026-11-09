@@ -1,0 +1,8 @@
+{
+  "_note": "Pages the watcher hashes. A change creates an 'unverified' source-changed event for a human to read and turn into a real event. Add or remove freely.",
+  "sources": [
+    { "id": "faa-starship", "publisher": "FAA", "url": "https://www.faa.gov/space/stakeholder_engagement/spacex_starship" },
+    { "id": "spacex-updates", "publisher": "SpaceX", "url": "https://www.spacex.com/updates" },
+    { "id": "cameron-county-closures", "publisher": "Cameron County", "url": "https://www.cameroncountytx.gov/spacex/" }
+  ]
+}

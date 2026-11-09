@@ -1,0 +1,27 @@
+{
+  "name": "smx-agent-kit",
+  "version": "0.1.0",
+  "description": "Reference trading agent and Starship signal feed for SMX testnet event markets (Base Sepolia). Signs only with your own wallet.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Space Markets, Inc.",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "agent": "node --env-file-if-exists=.env src/agent.js",
+    "feed:build": "node feed/build.js",
+    "feed:watch": "node feed/watch.js",
+    "wallet:new": "node src/new-wallet.js",
+    "test": "node --test test/*.test.js",
+    "agent:live": "node --env-file-if-exists=.env src/agent.js --live",
+    "settle": "node --env-file-if-exists=.env src/settle.js",
+    "markets": "node --env-file-if-exists=.env src/agent.js --list"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "ox": "^0.9.0",
+    "smx-mcp": "0.2.2",
+    "viem": "^2.57.1"
+  }
+}

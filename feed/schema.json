@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://smx.space/feed/starship-event.schema.json",
+  "title": "SMX Starship signal event",
+  "description": "One timestamped, sourced fact about Starship progress. Append-only: corrections are new events that name the event they supersede.",
+  "type": "object",
+  "required": ["id", "observedAt", "type", "vehicle", "summary", "source", "confidence"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$" },
+    "observedAt": { "type": "string", "format": "date-time", "description": "When we recorded it (UTC)." },
+    "type": {
+      "enum": ["liftoff", "ship-catch", "booster-catch", "scheduled", "scrub", "licence", "hazard-notice", "static-fire", "rollout", "source-changed", "note"]
+    },
+    "vehicle": { "const": "starship" },
+    "flight": { "type": "string", "description": "Flight number as published, e.g. \"15\"." },
+    "site": { "enum": ["starbase", "florida", "unknown"] },
+    "eventTime": { "type": "string", "format": "date-time", "description": "When it happened, or the published NET for type=scheduled." },
+    "plans": { "type": "array", "items": { "enum": ["ship-catch", "booster-catch", "florida"] }, "description": "type=scheduled only: objectives the source says are planned." },
+    "summary": { "type": "string", "maxLength": 280 },
+    "source": {
+      "type": "object",
+      "required": ["url", "publisher"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "publisher": { "type": "string" },
+        "published": { "type": "string", "description": "Publish date as shown by the source." }
+      }
+    },
+    "confidence": { "enum": ["official", "reported", "unverified"], "description": "official = the operator or a regulator; reported = named press; unverified = needs a human check. The reference agent ignores unverified events." },
+    "supersedes": { "type": "string", "description": "id of an earlier event this one corrects." },
+    "addedBy": { "type": "string" }
+  }
+}
